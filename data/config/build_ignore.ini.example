@@ -1,6 +1,8 @@
+; Making a group with the prefix of `./` will be identified as a folder
+; so you can add only these 2 values in the group. By default `KEEP_FOLDER` is true.
 [./data/]
 KEEP_FOLDER=true
-REMOVE=test.txt,test2.txt,array_item 3.extension
+REMOVE=test.txt,test2.txt, array_item 3.extension
 
 ; The values here are default values you can set, but you can change the values during export.
 [Settings]

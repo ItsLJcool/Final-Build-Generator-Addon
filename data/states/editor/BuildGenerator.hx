@@ -529,6 +529,8 @@ class BuildData {
 			var path:String = '${BuildData.EXECUTABLE_BUILD_FOLDER}/mods/${BuildData.mod_folder_name}';
 			CoolUtil.addMissingFolders(Path.directory(path));
 
+			CoolUtil.safeSaveFile('${BuildData.EXECUTABLE_BUILD_FOLDER}/mods/autoload.txt', BuildData.mod_folder_name);
+
 			var copy_path:String = '${BuildData.export_path}/${BuildData.mod_folder_name}';
 			if (BuildData.export_as_compressed_mod && !BuildData.export_as_cne_mod) File.copy('${copy_path}.zip', '$path.zip');
 			else {
@@ -544,15 +546,14 @@ class BuildData {
 				});
 			}
 		}
-		copy_once_more();
 
-		// FileUtil.copy_folder_unthreaded(".", BuildData.EXECUTABLE_BUILD_FOLDER, ignore_list, copy_once_more, (e) -> {
-		// 	_log([Logs.logText("Failed to export executable!", -1), Logs.logText('\n$e', 12)]);
-		// 	BuildData.BUILDING_FAILED = true;
-		// }, (p, max) -> {
-		// 	CURRENT_PROGRESS.progress = p;
-		// 	BuildData.CURRENT_PROGRESS.text = progress_text;
-		// });
+		FileUtil.copy_folder_unthreaded(".", BuildData.EXECUTABLE_BUILD_FOLDER, ignore_list, copy_once_more, (e) -> {
+			_log([Logs.logText("Failed to export executable!", -1), Logs.logText('\n$e', 12)]);
+			BuildData.BUILDING_FAILED = true;
+		}, (p, max) -> {
+			CURRENT_PROGRESS.progress = p;
+			BuildData.CURRENT_PROGRESS.text = progress_text;
+		});
 	}
 
 	/*
