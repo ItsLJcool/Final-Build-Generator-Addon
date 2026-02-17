@@ -1,0 +1,12 @@
+[./data/]
+KEEP_FOLDER=true
+REMOVE=test.txt,test2.txt,array_item 3.extension
+
+; The values here are default values you can set, but you can change the values during export.
+[Settings]
+; If true, it will compress the mod into a .zip file.
+COMPRESS=true
+; If true, it will export the mod as a CodenameEngine Mod (if COMPRESS is true).
+CNE_MOD=true
+; If true, it will export the mod as an executable along side your Modpack export.
+EXE_BUILD=false
