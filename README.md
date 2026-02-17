@@ -89,4 +89,11 @@ All builds will be exported into `./.exports`, and everytime you rebuild it will
 
 ## Currently Tested versions (and recommended)
 - Experimental Commits:
+  - **1b403b2** (Where the function `ThreadUtil.execAsync` is implemented, without it this addon cannot run.)
   - **bbb16f4**
+
+I'd assume every build from **1b403b2** onwards will work, but not 100% guarenteed due to technical changes or the sorts.
+
+## Known Builds that will not work:
+- Releases:
+  - Anything before v1.0.1, including v1.0.1... lol

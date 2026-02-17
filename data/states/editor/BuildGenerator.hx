@@ -18,6 +18,8 @@ import funkin.backend.utils.ThreadUtil;
 import funkin.backend.system.Logs;
 
 import funkin.backend.system.Flags;
+import funkin.backend.system.macros.GitCommitMacro;
+
 import funkin.editors.ui.UISliceSprite;
 
 import funkin.menus.ui.Alphabet;
@@ -29,6 +31,8 @@ import sys.FileSystem;
 
 import haxe.ds.StringMap;
 import haxe.io.Path;
+
+import flixel.utils.FlxAxes;
 
 import flixel.effects.FlxFlicker;
 
@@ -375,6 +379,16 @@ class BuildData {
 		BuildData._BUILD_CHILDREN_CACHE = children;
 		build_animation(BuildData._BUILD_ITEM_CACHE, BuildData._BUILD_CHILDREN_CACHE);
 
+		if (ThreadUtil.execAsync == null) {
+			BuildData.CURRENT_PROGRESS.text = (
+			'ERROR! This version of CodenameEngine doesn\'t support the `ThreadUtil.execAsync`
+			function. Please report this error on the GitHub with the Commit Hash of this build.
+				
+			Hash: ${GitCommitMacro.commitHash}
+			Branch: ${GitCommitMacro.currentBranch}');
+			BuildData.CURRENT_PROGRESS.screenCenter(FlxAxes.X);
+			return;
+		}
 
 		ThreadUtil.execAsync(() -> {
 			BuildData.CURRENT_PROGRESS.text = "Cleaning Export Folder...";
