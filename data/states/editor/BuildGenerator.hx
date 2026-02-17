@@ -232,6 +232,8 @@ class BuildData {
 			if (value.exists("REMOVE")) data.remove = [for (item in value.get("REMOVE").split(",")) if (item.trim() != "") item.trim()];
 			IGNORE_LIST.set(folder_name, data);
 		}
+		if (IGNORE_LIST.exists("data/config")) IGNORE_LIST.get("data/config").remove.push("build_ignore.ini");
+		else IGNORE_LIST.set("data/config", {keep: true, remove: ['build_ignore.ini']});
 	}
 
 	public static var export_path:String = ".export/";
