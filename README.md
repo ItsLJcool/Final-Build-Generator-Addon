@@ -41,6 +41,12 @@ This will mimic the code found in the default `MainMenuState.hx`.
 ## How to configure your mod to the fullest?
 In the download of the Addon, if you look in `./data/config/` you will see a `build_ignore.ini.example` file, this will have an example of the basics of what you can do.
 
+> [!CAUTION]
+> Currently, CodenameEngine doesn't support Compressed Libraries.
+>
+> The `COMPRESS` and `CNE_MOD` options shouldn't be used as of now.
+> The PR that implements this feature ([#761](https://github.com/CodenameCrew/CodenameEngine/pull/761)) is being planned on being merged, and once it does these features will be accessable.
+
 You would put this in your own mod's folder in `./mods/[YOUR MOD]/data/config/build_ignore.ini`
 #### This file is not exported in the final build your welcome !!
 ```ini
