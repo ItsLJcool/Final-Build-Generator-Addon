@@ -238,6 +238,12 @@ class BuildData {
 		}
 		if (IGNORE_LIST.exists("data/config")) IGNORE_LIST.get("data/config").remove.push("build_ignore.ini");
 		else IGNORE_LIST.set("data/config", {keep: true, remove: ['build_ignore.ini']});
+
+		if (IGNORE_LIST.exists("")) {
+			IGNORE_LIST.get("").keep = true;
+			IGNORE_LIST.get("").remove = NEVER_CHECK;
+		}
+		else IGNORE_LIST.set("", {keep: true, remove: NEVER_CHECK});
 	}
 
 	public static var export_path:String = ".export/";
@@ -460,7 +466,7 @@ class BuildData {
 		var ignore_list:Array<String> = [];
 		for (key=>value in IGNORE_LIST) {
 			if (!value.keep) ignore_list.push('${BuildData.mod_path}/$key');
-			else for (item in value.remove) ignore_list.push('${BuildData.mod_path}/$key/$item');
+			else for (item in value.remove) ignore_list.push('${BuildData.mod_path}$key/$item');
 		}
 
 		CoolUtil.addMissingFolders(modpack_export_path);
