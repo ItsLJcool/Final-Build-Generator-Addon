@@ -42,10 +42,10 @@ This will mimic the code found in the default `MainMenuState.hx`.
 In the download of the Addon, if you look in `./data/config/` you will see a `build_ignore.ini.example` file, this will have an example of the basics of what you can do.
 
 > [!CAUTION]
-> Currently, CodenameEngine doesn't support Compressed Libraries.
+> Currently, CodenameEngine doesn't support Compressed Libraries as of v1.0.1 Release.
 >
-> The `COMPRESS` and `CNE_MOD` options shouldn't be used as of now.
-> The PR that implements this feature ([#761](https://github.com/CodenameCrew/CodenameEngine/pull/761)) is being planned on being merged, and once it does these features will be accessable.
+> The `COMPRESS` and `CNE_MOD` options should only be used in `a7b0401` or newer commits
+> The SysZip PR has been merged and will be avaliable in the next release of CodenameEngine.
 
 You would put this in your own mod's folder in `./mods/[YOUR MOD]/data/config/build_ignore.ini`
 #### This file is not exported in the final build your welcome !!
